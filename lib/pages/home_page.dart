@@ -36,12 +36,124 @@ class _HomePageState extends State<HomePage> {
         onTabChange: (index) => navigateBottonBar(index),
         ),
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {},
-            ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: Builder(builder: (context) => IconButton(
+            icon: const Icon(
+              Icons.menu, 
+              color: Colors.black,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            ),)
           ),
-          body: _pages[_selectedIndex],
-        );
+
+          //HACIENDO DRAWER
+          drawer: Drawer(
+            backgroundColor: Colors.grey[900],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                
+                //Columna extra para mantener las opciones principales arriba y mandar el logout hasta abajo del drawer
+
+                Column(
+                  children: [
+                    //Logo NIKE
+                DrawerHeader(
+                  child: Center (
+                    child: SizedBox(
+                      width: 180,
+                      height: 180,
+                      child: Image.asset(
+                        'lib/images/nike.png',
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Divider(
+                      color: Colors.grey[900],
+                    ),
+                  ),
+
+                  //Opciones del drawer
+
+                  //HomePage
+                  const Padding(
+                    padding: EdgeInsets.only(left: 25),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.home,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        'Home',
+                      style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+
+                  //Informacion
+                const Padding(
+                  padding: EdgeInsets.only(left: 25),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.info,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      'About',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+
+                
+            //Configuracion
+
+                const Padding(
+                  padding: EdgeInsets.only(left: 25),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.settings,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      'Settings',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              
+              ],
+
+            ),
+
+
+
+            //Logout bottom
+            const Padding(
+              padding: EdgeInsets.only(left: 25, bottom: 25.0,),
+              child: ListTile(
+                leading: Icon(
+                  Icons.logout,
+                  color: Colors.white,
+                  ),
+                  title: Text(
+                    'Logout',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+            )
+          ],
+        )
+      ),
+      body: _pages[_selectedIndex],
+    );
   }
 }

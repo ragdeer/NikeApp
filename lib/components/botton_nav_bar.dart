@@ -24,7 +24,7 @@ class MyBottonNavBar extends StatelessWidget {
         ),
           GButton(
             icon:Icons.shopping_bag_rounded,
-            text:'cart'
+            text:'cart',
           ),
         ],
       ),
