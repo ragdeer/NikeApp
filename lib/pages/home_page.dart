@@ -130,6 +130,22 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               
+              
+                const Padding(
+                  padding: EdgeInsets.only(left: 25),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.favorite,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      'Favorites',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+
+
               ],
 
             ),

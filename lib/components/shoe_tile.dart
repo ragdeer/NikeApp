@@ -4,7 +4,8 @@ import '../models/shoe.dart';
 
 class ShoeTile extends StatelessWidget {
   Shoe shoe;
-  ShoeTile({super.key, required this.shoe});
+  void Function()? onTap;
+  ShoeTile({super.key, required this.shoe, required this.onTap,});
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,12 @@ class ShoeTile extends StatelessWidget {
           ),
           
           //descripcion 
-          Text(shoe.description,
-            style: TextStyle(color: Colors.grey[600]) ,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Text(
+              shoe.description,
+              style: TextStyle(color: Colors.grey[600]) ,
+            ),
           ),
           
           //Precio y detalles
@@ -47,8 +52,9 @@ class ShoeTile extends StatelessWidget {
                     ),
             
                     const SizedBox(height: 5,),
-            
-                    Text('\$' + shoe.price,
+
+                    //Obtener precio y mostrarlo           
+                    Text(shoe.price,
                       style: const TextStyle(
                         color: Colors.grey,
                       ),
@@ -57,18 +63,21 @@ class ShoeTile extends StatelessWidget {
                 ),
                 
                 //Boton Añadir carrito
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12), 
-                    )
-                  ),
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: onTap,
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: const BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        bottomRight: Radius.circular(12), 
+                      )
+                    ),
+                    child: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
                   ),
                 )
             

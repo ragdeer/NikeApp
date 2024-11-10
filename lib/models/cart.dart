@@ -8,31 +8,31 @@ class Cart extends ChangeNotifier {
   List<Shoe> shoeShop = [
     Shoe(
       name: 'AJ1 x Cactus Jack',
-      price: '800',
+      price: '\$800',
       description: 'I get these gooosebumps everytime yeah!',
       imagePath: 'lib/images/Travis.png'
     ),
     Shoe(
       name: 'Jordan 1 "Chicago"',
-      price: '5100',
+      price: '\$5100',
       description: 'I get these gooosebumps everytime yeah!',
       imagePath: 'lib/images/Chicago.png'
     ),
     Shoe(
       name: 'Dunk Off-White',
-      price: '600',
+      price: '\$600',
       description: 'I get these gooosebumps everytime yeah!',
       imagePath: 'lib/images/Off-white.png'
     ),
     Shoe(
       name: 'AF1 x Tiffany&Co.',
-      price: '1500  ',
+      price: '\$1500  ',
       description: 'I get these gooosebumps everytime yeah!',
       imagePath: 'lib/images/Tiffany.png'
     ),
     Shoe(
-      name: 'Jordan 4 "Black cat"',
-      price: '1100  ',
+      name: 'AJ4 "Black Cat"',
+      price: '\$1100  ',
       description: 'I get these gooosebumps everytime yeah!',
       imagePath: 'lib/images/Blackcat.png'
     )
