@@ -20,9 +20,12 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Cambiar el color dependiendo de la cantidad del artículo en el carrito
+    Color itemColor = quantity > 0 ? Colors.blueAccent : Colors.grey[400]!;
+
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[100],
+        color: itemColor, // Color del fondo depende de la cantidad
         borderRadius: BorderRadius.circular(12),
       ),
       margin: const EdgeInsets.only(bottom: 10),
@@ -35,8 +38,8 @@ class CartItem extends StatelessWidget {
             Text(shoe.price),
             const SizedBox(height: 4),
             Text(
-              'Cantidad: $quantity', // Muestra la cantidad
-              style: TextStyle(color: Colors.grey[600]),
+              'Quantity: $quantity', // Muestra la cantidad
+              style: TextStyle(color: Colors.red[600]),
             ),
           ],
         ),
