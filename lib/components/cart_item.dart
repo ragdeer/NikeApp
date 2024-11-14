@@ -3,23 +3,19 @@ import 'package:provider/provider.dart';
 import '../models/cart.dart';
 import '../models/shoe.dart';
 
-class CartItem extends StatefulWidget {
-  Shoe shoe;
+class CartItem extends StatelessWidget {
+  final Shoe shoe;
+  final int quantity;
+
   CartItem({
     super.key,
     required this.shoe,
+    required this.quantity,
   });
 
-  @override
-  State<CartItem> createState() => _CartItemState();
-}
-
-class _CartItemState extends State<CartItem> {
-
-  //Eliminar del carrito
-
-  void removeItemFromCart() {
-    Provider.of<Cart>(context, listen: false).removeItemToCart(widget.shoe);
+  // Método para reducir la cantidad o eliminar el producto
+  void removeItemFromCart(BuildContext context) {
+    Provider.of<Cart>(context, listen: false).removeItemFromCart(shoe);
   }
 
   @override
@@ -31,12 +27,22 @@ class _CartItemState extends State<CartItem> {
       ),
       margin: const EdgeInsets.only(bottom: 10),
       child: ListTile(
-        leading: Image.asset(widget.shoe.imagePath),
-        title: Text(widget.shoe.name),
-        subtitle: Text(widget.shoe.price),
+        leading: Image.asset(shoe.imagePath),
+        title: Text(shoe.name),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(shoe.price),
+            const SizedBox(height: 4),
+            Text(
+              'Cantidad: $quantity', // Muestra la cantidad
+              style: TextStyle(color: Colors.grey[600]),
+            ),
+          ],
+        ),
         trailing: IconButton(
-          onPressed: removeItemFromCart,
-          icon: Icon (Icons.delete),
+          onPressed: () => removeItemFromCart(context),
+          icon: const Icon(Icons.remove_circle_outline),
         ),
       ),
     );
